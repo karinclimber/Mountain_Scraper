@@ -55,7 +55,7 @@ app.get("/all", function(req, res) {
 app.get("/scrape", function(req, res) {
   request("https://www.mountainproject.com/u/michael-anderson24//109155979?action=ticks&", function(error, response, html) {
     var $ = cheerio.load(html);
-    $(".objectList tr").each(function(i, element) {
+    $(".objectList tr:not(:has(.objectListColumnHeader))").each(function(i, element) {
      var name = $(element).find('td:nth-of-type(1)').text().trim();
      var rating = $(element).find('td:nth-of-type(2) span.rateYDS').text().trim();
      var location = $(element).find('td:nth-of-type(3)').text().trim();
