@@ -1,0 +1,45 @@
+body {
+    background-color: #109C4A;
+    font-family: 'Rambla', sans-serif;
+    font-size: 16px;
+  }
+  
+  table,
+  td {
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    color:black;
+    
+  }
+  
+  th {
+    padding:20px;
+    font-weight: bold;
+    font-family: 'Playfair Display SC', serif;
+    font-size: 20px;
+  }
+  table {
+    width: 1000px;
+    background-color: #74CEF8;
+  }
+  
+  td {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  button {
+    width: 235px;
+    height: 50px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #237494;
+    background-color: white;
+  }
+  
+  .active {
+    color: #1E1538;
+    background-color: #E8F80A;
+  }
+  

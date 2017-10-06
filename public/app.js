@@ -45,7 +45,7 @@ function displayResults(route) {
     setActive("#route-rating");
   
     // Do an api call to the back end for json with all routes sorted by date
-    $.getJSON("/rate", function(data) {
+    $.getJSON("/rating", function(data) {
       // Call our function to generate a table body
       displayResults(data);
     });

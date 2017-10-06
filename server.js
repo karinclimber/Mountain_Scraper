@@ -12,11 +12,11 @@ var mongojs = require("mongojs");
 // Require request and cheerio. This makes the scraping possible
 var request = require("request");
 var cheerio = require("cheerio");
-var cheerioTableparser = require('cheerio-tableparser');
 
 // Initialize Express
 var app = express();
 
+app.use(express.static("public"));
 // Database configuration
 var databaseUrl = "scraper";
 var collections = ["scrapeData"];
@@ -32,11 +32,6 @@ app.get("/", function(req, res) {
   res.send("Hello world");
 });
 
-/* TODO: make two more routes
- * -/-/-/-/-/-/-/-/-/-/-/-/- */
-
-// Route 1
-// =======
 
 app.get("/all", function(req, res) {
   // Find all results from the scrapedData collection in the db
@@ -93,8 +88,65 @@ app.get("/scrape", function(req, res) {
   res.send("Scrape Complete");
   });
 
-/* -/-/-/-/-/-/-/-/-/-/-/-/- */
+  app.get("/name", function(req, res) {
+    // Query: In our database, go to the animals collection, then "find" everything,
+    // but this time, sort it by name (1 means ascending order)
+    db.scrapeData.find().sort({ name: 1 }, function(error, found) {
+      // Log any errors if the server encounters one
+      if (error) {
+        console.log(error);
+      }
+      // Otherwise, send the result of this query to the browser
+      else {
+        res.json(found);
+      }
+    });
+  });
 
+  app.get("/rating", function(req, res) {
+    // Query: In our database, go to the animals collection, then "find" everything,
+    // but this time, sort it by name (1 means ascending order)
+    db.scrapeData.find().sort({ rating: 1 }, function(error, found) {
+      // Log any errors if the server encounters one
+      if (error) {
+        console.log(error);
+      }
+      // Otherwise, send the result of this query to the browser
+      else {
+        res.json(found);
+      }
+    });
+  });
+
+  app.get("/loc", function(req, res) {
+    // Query: In our database, go to the animals collection, then "find" everything,
+    // but this time, sort it by name (1 means ascending order)
+    db.scrapeData.find().sort({ location: 1 }, function(error, found) {
+      // Log any errors if the server encounters one
+      if (error) {
+        console.log(error);
+      }
+      // Otherwise, send the result of this query to the browser
+      else {
+        res.json(found);
+      }
+    });
+  });
+
+  app.get("/date", function(req, res) {
+    // Query: In our database, go to the animals collection, then "find" everything,
+    // but this time, sort it by name (1 means ascending order)
+    db.scrapeData.find().sort({ tickDate: 1 }, function(error, found) {
+      // Log any errors if the server encounters one
+      if (error) {
+        console.log(error);
+      }
+      // Otherwise, send the result of this query to the browser
+      else {
+        res.json(found);
+      }
+    });
+  });
 // Listen on port 3000
 app.listen(3000, function() {
   console.log("App running on port 3000!");
